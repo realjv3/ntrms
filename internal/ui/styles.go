@@ -22,7 +22,7 @@ var (
 
 	LabelStyle = lipgloss.NewStyle().
 			Foreground(ColorPurple).
-			Width(20)
+			Width(22)
 
 	ValueStyle = lipgloss.NewStyle().
 			Foreground(ColorWhite)

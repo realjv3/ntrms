@@ -33,7 +33,7 @@ type ResultsViewData struct {
 func RenderInputView(d InputViewData) string {
 	title := RenderBanner()
 
-	labels := []string{"Ticker", "Account Equity ($)", "Risk (%)", "Stop Multiplier (×ATR)", "Entry Price (blank=auto)"}
+	labels := []string{"Ticker", "Account Equity ($)", "Risk (%)", "Stop Multiplier (xATR)", "Entry Price (auto)"}
 
 	var rows string
 	for i, label := range labels {
