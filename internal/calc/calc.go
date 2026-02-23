@@ -34,6 +34,14 @@ func Compute(in Inputs) Results {
 		positionSize = math.Floor(riskUnit / stopDistance)
 	}
 
+	// cap position size to what the account can actually afford
+	if in.EntryPrice > 0 {
+		maxAffordable := math.Floor(in.Equity / in.EntryPrice)
+		if positionSize > maxAffordable {
+			positionSize = maxAffordable
+		}
+	}
+
 	totalCost := positionSize * in.EntryPrice
 
 	return Results{

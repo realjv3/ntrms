@@ -70,6 +70,22 @@ func TestCompute(t *testing.T) {
 			wantPos:  1000.0,
 			wantCost: 50.0,
 		},
+		{
+			name: "capped by equity",
+			in: Inputs{
+				ATR:            0.217,
+				Equity:         950,
+				RiskPct:        30.0,
+				StopMultiplier: 1.0,
+				EntryPrice:     1.68,
+			},
+			// risk formula says floor(285/0.217) = 1313 shares @ $2205.84
+			// but account can only afford floor(950/1.68) = 565 shares
+			wantRisk: 285.0,
+			wantStop: 1.463,
+			wantPos:  565.0,
+			wantCost: 949.2,
+		},
 	}
 
 	for _, tt := range tests {
